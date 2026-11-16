@@ -178,6 +178,54 @@
     .card .ask:hover { color: var(--amber-strong); gap: 12px; }
     .card .ask { transition: gap .18s ease, color .18s ease; }
 
+    /* product grid */
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .pcard {
+      background: linear-gradient(180deg, var(--surface-2), var(--surface));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .pcard:hover { transform: translateY(-6px); border-color: #33405a66; box-shadow: var(--shadow-card); }
+    .pvisual {
+      position: relative; aspect-ratio: 16 / 10; overflow: hidden;
+      background:
+        radial-gradient(75% 90% at 50% 100%, rgba(255, 176, 32, .08), transparent 70%),
+        linear-gradient(180deg, #10141b, #0c0f14);
+      border-bottom: 1px solid var(--border-soft);
+      display: grid; place-items: center;
+    }
+    .pvisual svg { width: 82%; height: auto; max-height: 86%; }
+    .pchip {
+      position: absolute; top: 12px; left: 12px;
+      font-family: var(--font-head); font-size: .64rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--amber); background: rgba(10, 12, 16, .78);
+      border: 1px solid rgba(255, 176, 32, .3); border-radius: 7px; padding: 4px 9px;
+    }
+    .pbody { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+    .pname { font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; letter-spacing: -.01em; }
+    .pspec { color: var(--muted); font-size: .84rem; margin-top: 3px; }
+    .prow { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 14px; }
+    .price { font-family: var(--font-head); font-weight: 800; font-size: 1.12rem; color: var(--amber); white-space: nowrap; }
+    .price .from { display: block; font-size: .68rem; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1px; }
+    .pask {
+      flex: none; width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: rgba(255, 176, 32, .12); border: 1px solid rgba(255, 176, 32, .32);
+      color: var(--amber); transition: background .18s ease, color .18s ease, transform .18s ease;
+    }
+    .pask:hover { background: var(--amber); color: #141005; transform: translateY(-2px); }
+    .price-note { margin-top: 26px; color: var(--muted); font-size: .88rem; display: flex; gap: 10px; align-items: flex-start; }
+    .price-note svg { flex: none; margin-top: 2px; }
+    .source-banner {
+      margin-top: 20px; border: 1px dashed #3a4356; border-radius: var(--radius);
+      background: linear-gradient(180deg, #12161e, #0e1116);
+      padding: 26px 28px; display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap;
+    }
+    .source-banner h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .source-banner p { color: var(--muted); font-size: .94rem; }
+
     /* steps band */
     .band {
       background: linear-gradient(180deg, #10131a, #0d1015);
@@ -261,7 +309,7 @@
       .nav-links li:last-child a.nav-link { border-bottom: none; }
       .nav-links li:last-child { margin-top: 14px; }
       .nav-links li:last-child .btn { width: 100%; }
-      .cards, .steps { grid-template-columns: 1fr; }
+      .cards, .steps, .product-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       section { padding: 68px 0; }
       .topbar .hide-sm { display: none; }
@@ -298,6 +346,7 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a class="nav-link" href="#shop">Shop</a></li>
+        <li><a class="nav-link" href="#stock">In stock</a></li>
         <li><a class="nav-link" href="#how">How to buy</a></li>
         <li><a class="nav-link" href="#why">Why us</a></li>
         <li><a class="nav-link" href="#visit">Visit us</a></li>
@@ -413,6 +462,302 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stock">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">In stock now</span>
+          <h2>What's on the shelf this week</h2>
+          <p class="lead">A snapshot of fast-moving items at the shop right now. Something catching your eye? Tap the chat button on the card and we'll confirm price and availability immediately.</p>
+        </div>
+
+        <div class="product-grid">
+          <!-- HP 250 G10 -->
+          <article class="pcard reveal d1">
+            <div class="pvisual">
+              <span class="pchip">Laptop</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="112" rx="84" ry="9" fill="rgba(255,176,32,.07)"/>
+                <rect x="47" y="18" width="126" height="78" rx="6" fill="#b9c0cc"/>
+                <rect x="52" y="23" width="116" height="68" rx="3" fill="#0a0c10"/>
+                <path d="M62 80l17-19 12 10 21-25 15 20" stroke="#ffb020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M62 87h58" stroke="#2a3242" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="149" cy="34" r="6" stroke="#ffb020" stroke-width="1.6"/>
+                <path d="M34 98h152l7 9H27l7-9Z" fill="#8f97a6"/>
+                <rect x="95" y="98" width="30" height="3.4" rx="1.7" fill="#6b7280"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">HP 250 G10</div>
+              <div class="pspec">Core i5 · 8GB RAM · 512GB SSD · 15.6" FHD</div>
+              <div class="prow">
+                <div class="price"><span class="from">New, from</span>₦550,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Is%20the%20HP%20250%20G10%20(Core%20i5%2C%208GB%2C%20512GB)%20in%20stock%3F%20Please%20send%20the%20current%20price." target="_blank" rel="noopener" aria-label="Ask about HP 250 G10 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dell Latitude 5440 -->
+          <article class="pcard reveal d2">
+            <div class="pvisual">
+              <span class="pchip">Laptop</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="112" rx="84" ry="9" fill="rgba(255,176,32,.07)"/>
+                <rect x="50" y="18" width="120" height="78" rx="6" fill="#232936"/>
+                <rect x="55" y="23" width="110" height="68" rx="3" fill="#0a0c10"/>
+                <path d="M64 36h52" stroke="#3a4356" stroke-width="3" stroke-linecap="round"/>
+                <path d="M64 48h76" stroke="#ffb020" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
+                <path d="M64 59h38" stroke="#3a4356" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M64 70h64" stroke="#2a3242" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M64 80h30" stroke="#2a3242" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M36 98h148l7 9H29l7-9Z" fill="#3a4356"/>
+                <rect x="96" y="98" width="28" height="3.4" rx="1.7" fill="#232936"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">Dell Latitude 5440</div>
+              <div class="pspec">Core i5 · 16GB RAM · 512GB SSD · 14" FHD</div>
+              <div class="prow">
+                <div class="price"><span class="from">UK-used, from</span>₦450,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Do%20you%20have%20UK-used%20Dell%20Latitude%205440%20(Core%20i5)%20right%20now%3F%20Please%20send%20the%20current%20price." target="_blank" rel="noopener" aria-label="Ask about Dell Latitude 5440 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- MacBook Air M4 -->
+          <article class="pcard reveal d3">
+            <div class="pvisual">
+              <span class="pchip">Laptop</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="112" rx="84" ry="9" fill="rgba(255,176,32,.07)"/>
+                <defs>
+                  <linearGradient id="macw" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ffb020"/><stop offset="1" stop-color="#e69500"/>
+                  </linearGradient>
+                </defs>
+                <rect x="53" y="16" width="114" height="80" rx="7" fill="#d3d8e0"/>
+                <rect x="57" y="20" width="106" height="72" rx="3" fill="#0a0c10"/>
+                <rect x="101" y="20" width="18" height="4.6" rx="2.3" fill="#0a0c10"/>
+                <rect x="61" y="29" width="98" height="58" rx="2" fill="url(#macw)" opacity=".92"/>
+                <path d="M61 87l30-24 22 14 26-32 20 42Z" fill="#0a0c10" opacity=".25"/>
+                <circle cx="82" cy="42" r="7" fill="#fff" opacity=".85"/>
+                <path d="M36 98h148l4.5 9H31.5L36 98Z" fill="#aeb5c1"/>
+                <rect x="96" y="98" width="28" height="3.2" rx="1.6" fill="#8b93a3"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">MacBook Air 13" M4</div>
+              <div class="pspec">16GB RAM · 256GB SSD · all-day battery</div>
+              <div class="prow">
+                <div class="price"><span class="from">New, from</span>₦1,500,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20I'm%20interested%20in%20the%20MacBook%20Air%2013-inch%20M4.%20Please%20send%20the%20current%20price." target="_blank" rel="noopener" aria-label="Ask about MacBook Air M4 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- iPhone 17 -->
+          <article class="pcard reveal d1">
+            <div class="pvisual">
+              <span class="pchip">Phone</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="118" rx="62" ry="8" fill="rgba(255,176,32,.07)"/>
+                <defs>
+                  <linearGradient id="iphw" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ffb020"/><stop offset=".55" stop-color="#b06a00"/><stop offset="1" stop-color="#5a3900"/>
+                  </linearGradient>
+                </defs>
+                <rect x="82" y="12" width="56" height="112" rx="12" fill="#232936"/>
+                <rect x="85.5" y="15.5" width="49" height="105" rx="9" fill="url(#iphw)"/>
+                <rect x="102" y="20" width="16" height="5" rx="2.5" fill="#0a0c10"/>
+                <path d="M96 100l14-18 8 10 12-14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/>
+                <path d="M138 30c8 4 8 16 0 20M146 24c13 6.5 13 26 0 32" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+                <path d="M82 30c-8 4-8 16 0 20M74 24c-13 6.5-13 26 0 32" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">iPhone 17 · 256GB</div>
+              <div class="pspec">Brand new &amp; UK-used options</div>
+              <div class="prow">
+                <div class="price"><span class="from">From</span>₦1,350,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Please%20send%20current%20prices%20for%20the%20iPhone%2017%20256GB%20-%20both%20new%20and%20UK-used." target="_blank" rel="noopener" aria-label="Ask about iPhone 17 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Galaxy S25 -->
+          <article class="pcard reveal d2">
+            <div class="pvisual">
+              <span class="pchip">Phone</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="118" rx="62" ry="8" fill="rgba(255,176,32,.07)"/>
+                <rect x="88" y="10" width="44" height="116" rx="10" fill="#2b3648"/>
+                <rect x="92" y="26" width="12" height="12" rx="4" fill="#12151c"/>
+                <circle cx="98" cy="32" r="3.4" fill="#ffb020"/>
+                <rect x="92" y="44" width="12" height="12" rx="4" fill="#12151c"/>
+                <circle cx="98" cy="50" r="3.4" fill="#ffb020"/>
+                <rect x="92" y="62" width="12" height="12" rx="4" fill="#12151c"/>
+                <circle cx="98" cy="68" r="3.4" fill="#ffb020"/>
+                <rect x="94" y="100" width="32" height="7" rx="3.5" fill="#171b24"/>
+                <rect x="106" y="100" width="6" height="7" rx="2" fill="#ffb020"/>
+                <path d="M138 30c8 4 8 16 0 20" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+                <path d="M82 30c-8 4-8 16 0 20" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">Samsung Galaxy S25 5G</div>
+              <div class="pspec">256GB · 6.2" AMOLED · sealed new</div>
+              <div class="prow">
+                <div class="price"><span class="from">New, from</span>₦1,350,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Is%20the%20Samsung%20Galaxy%20S25%20256GB%20available%3F%20Please%20send%20the%20current%20price." target="_blank" rel="noopener" aria-label="Ask about Galaxy S25 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Redmi Note 14 -->
+          <article class="pcard reveal d3">
+            <div class="pvisual">
+              <span class="pchip">Phone</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="118" rx="62" ry="8" fill="rgba(255,176,32,.07)"/>
+                <rect x="88" y="10" width="44" height="116" rx="10" fill="#1f3a33"/>
+                <rect x="92" y="15" width="17" height="17" rx="5" fill="#12151c"/>
+                <circle cx="98.5" cy="21" r="3.6" fill="#8fe3c9"/>
+                <circle cx="103.5" cy="27" r="3.6" fill="#8fe3c9"/>
+                <rect x="94" y="98" width="30" height="7" rx="3.5" fill="#171b24"/>
+                <rect x="104" y="98" width="5" height="7" rx="2" fill="#8fe3c9"/>
+                <path d="M138 30c8 4 8 16 0 20" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+                <path d="M82 30c-8 4-8 16 0 20" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">Redmi Note 14</div>
+              <div class="pspec">8GB RAM · 128GB · 108MP camera</div>
+              <div class="prow">
+                <div class="price"><span class="from">New, from</span>₦250,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Is%20the%20Redmi%20Note%2014%20available%3F%20Please%20send%20the%20current%20price." target="_blank" rel="noopener" aria-label="Ask about Redmi Note 14 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tecno Camon 40 -->
+          <article class="pcard reveal d1">
+            <div class="pvisual">
+              <span class="pchip">Phone</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="118" rx="62" ry="8" fill="rgba(255,176,32,.07)"/>
+                <rect x="88" y="10" width="44" height="116" rx="10" fill="#33304a"/>
+                <circle cx="110" cy="31" r="11.5" fill="#12151c"/>
+                <circle cx="110" cy="31" r="7" fill="none" stroke="#ffb020" stroke-width="2"/>
+                <circle cx="110" cy="31" r="2.6" fill="#ffb020"/>
+                <rect x="94" y="98" width="30" height="7" rx="3.5" fill="#171b24"/>
+                <rect x="104" y="98" width="5" height="7" rx="2" fill="#c9b8ff"/>
+                <path d="M138 30c8 4 8 16 0 20" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+                <path d="M82 30c-8 4-8 16 0 20" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">Tecno Camon 40</div>
+              <div class="pspec">8GB RAM · 256GB · 50MP camera</div>
+              <div class="prow">
+                <div class="price"><span class="from">New, from</span>₦320,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Is%20the%20Tecno%20Camon%2040%20(8GB%2F256GB)%20available%3F%20Please%20send%20the%20current%20price." target="_blank" rel="noopener" aria-label="Ask about Tecno Camon 40 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- AirPods Pro 2 -->
+          <article class="pcard reveal d2">
+            <div class="pvisual">
+              <span class="pchip">Accessory</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="118" rx="62" ry="8" fill="rgba(255,176,32,.07)"/>
+                <rect x="76" y="58" width="52" height="42" rx="14" fill="#e8eaef"/>
+                <line x1="76" y1="72" x2="128" y2="72" stroke="#c4c9d2" stroke-width="2"/>
+                <circle cx="91" cy="66" r="6.5" fill="#f6f7f9" stroke="#c4c9d2" stroke-width="1.6"/>
+                <circle cx="113" cy="66" r="6.5" fill="#f6f7f9" stroke="#c4c9d2" stroke-width="1.6"/>
+                <path d="M84 44c0-9 4-14 7-14s7 5 7 14v14h-14V44Z" fill="#f6f7f9" stroke="#c4c9d2" stroke-width="1.6"/>
+                <path d="M122 44c0-9-4-14-7-14s-7 5-7 14v14h14V44Z" fill="#f6f7f9" stroke="#c4c9d2" stroke-width="1.6"/>
+                <circle cx="91" cy="51" r="2.2" fill="#0a0c10"/>
+                <circle cx="129" cy="51" r="2.2" fill="#0a0c10"/>
+                <path d="M142 84c6 2.5 6 9 0 11.5" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+                <path d="M150 78c10 4.5 10 19 0 23.5" stroke="#3a4356" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">AirPods Pro 2 (USB-C)</div>
+              <div class="pspec">Active Noise Cancellation · original, sealed</div>
+              <div class="prow">
+                <div class="price"><span class="from">New, from</span>₦295,000</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Are%20original%20AirPods%20Pro%202%20(USB-C)%20available%3F%20Please%20send%20the%20current%20price." target="_blank" rel="noopener" aria-label="Ask about AirPods Pro 2 on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Oraimo power bank -->
+          <article class="pcard reveal d3">
+            <div class="pvisual">
+              <span class="pchip">Accessory</span>
+              <svg viewBox="0 0 220 140" fill="none" aria-hidden="true">
+                <ellipse cx="110" cy="118" rx="62" ry="8" fill="rgba(255,176,32,.07)"/>
+                <rect x="80" y="22" width="52" height="96" rx="14" fill="#171b24" stroke="#3a4356" stroke-width="2"/>
+                <rect x="92" y="34" width="28" height="12" rx="6" fill="#0a0c10" stroke="#2a3242" stroke-width="1.5"/>
+                <path d="M109 36.5l-4.5 6h4l-2.5 4.5 6-7h-4l2.5-3.5Z" fill="#ffb020"/>
+                <circle cx="94" cy="62" r="2.6" fill="#ffb020"/>
+                <circle cx="102.5" cy="62" r="2.6" fill="#ffb020"/>
+                <circle cx="111" cy="62" r="2.6" fill="#ffb020"/>
+                <circle cx="119.5" cy="62" r="2.6" fill="#ffb020"/>
+                <text x="106" y="86" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#9aa3b2" letter-spacing="1">20000</text>
+                <text x="106" y="97" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" font-weight="700" fill="#5c6575" letter-spacing="2">mAh</text>
+                <rect x="132" y="52" width="16" height="7" rx="3.5" fill="#171b24" stroke="#3a4356" stroke-width="1.5"/>
+                <rect x="132" y="64" width="16" height="7" rx="3.5" fill="#171b24" stroke="#3a4356" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="pbody">
+              <div class="pname">Oraimo Power Bank 20,000mAh</div>
+              <div class="pspec">Fast charging · dual USB output</div>
+              <div class="prow">
+                <div class="price"><span class="from">From</span>₦15,500</div>
+                <a class="pask" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20Please%20send%20prices%20for%20the%20Oraimo%2020%2C000mAh%20fast-charging%20power%20bank." target="_blank" rel="noopener" aria-label="Ask about Oraimo power bank on WhatsApp">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="price-note reveal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#ffb020" stroke-width="2"/><path d="M12 8h.01M11 12h1v4h1" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Prices are a market guide, not a quote — the market moves with the exchange rate, and UK-used stock changes daily. Confirm today's price on WhatsApp before visiting.
+        </p>
+
+        <div class="source-banner reveal">
+          <div>
+            <h3>Not on the list? We'll find it.</h3>
+            <p>Tell us the exact gadget and your budget — if it's sold in this market, we can source it for you.</p>
+          </div>
+          <a class="btn" href="https://wa.me/2348163636559?text=Hi%20ByteBuzz%20Hub!%20I'm%20looking%20for%20a%20gadget%20that's%20not%20on%20your%20site." target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.2 1 2.4c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.2.6.4 0 .1 0 .7-.3 1.3Z"/></svg>
+            Request a gadget
+          </a>
         </div>
       </div>
     </section>

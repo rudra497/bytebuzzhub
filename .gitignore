@@ -2,6 +2,7 @@
 Thumbs.db
 .DS_Store
 
-# local QA evidence, not part of the published site
+# local QA evidence + agent tool state, not part of the published site
 evidence/
 .playwright-mcp/
+.mimosa/
